@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Okt 2021 pada 18.32
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.7
+-- Generation Time: Oct 15, 2021 at 06:48 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -32,25 +32,26 @@ CREATE TABLE `mahasiswa` (
   `nama` varchar(50) DEFAULT NULL,
   `jkel` varchar(1) DEFAULT NULL,
   `alamat` text DEFAULT NULL,
-  `tgl_lahir` date DEFAULT NULL
+  `tgl_lahir` date DEFAULT NULL,
+  `umur` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`nim`, `nama`, `jkel`, `alamat`, `tgl_lahir`) VALUES
-('mhs01', 'Siti Aminah', 'P', 'Solo', '1995-10-01'),
-('mhs02', 'Rita', 'P', 'Solo', '1999-01-01'),
-('mhs03', 'Amirudin', 'L', 'Semarang', '1998-08-11'),
-('mhs04', 'Siti Maryam', 'P', 'Jakarta', '1995-04-15');
+INSERT INTO `mahasiswa` (`nim`, `nama`, `jkel`, `alamat`, `tgl_lahir`, `umur`) VALUES
+('mhs01', 'Siti Aminah', 'P', 'Solo', '1995-10-01', '19'),
+('mhs02', 'Rita', 'P', 'Solo', '1999-01-01', '20'),
+('mhs03', 'Amirudin', 'L', 'Semarang', '1998-08-11', '18'),
+('mhs04', 'Siti Maryam', 'P', 'Jakarta', '1995-04-15', '19');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`nim`);
