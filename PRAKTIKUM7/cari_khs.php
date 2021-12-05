@@ -4,8 +4,7 @@ include "koneksi.php";?>
 <form action="" method="get">
 	<label>Cari :</label>
 	<input type="text" name="cari">
-	<input type="submit" value="Cari">
-</form>
+	<input type="submit" value="Cari"></form>
 <?php 
 if(isset($_GET['cari'])){
 	$cari = $_GET['cari'];
@@ -15,26 +14,32 @@ if(isset($_GET['cari'])){
 	<tr>
 		<th>No</th>
 		<th>NIM</th>
+		<th>Nama Mahasiswa</th>
 		<th>Kode MK</th>
+		<th>Nama Matkul</th>
 		<th>Nilai</th>
 	</tr>
 <?php 
 if(isset($_GET['cari'])){
 	$cari = $_GET['cari'];
-	$sql="select * from KHS where nim like '%" . $cari."%'";
+	$sql = "select * from KHS INNER JOIN mahasiswa ON khs.nim = mahasiswa.nim INNER JOIN matakuliah ON khs.KodeMK = matakuliah.kode where mahasiswa.nim like'%".$cari."%'";
 	$tampil = mysqli_query($con,$sql);
 } else {
-	$sql="select * from KHS";
+	$sql = "SELECT * FROM KHS INNER JOIN mahasiswa ON khs.nim = mahasiswa.nim INNER JOIN matakuliah ON khs.kodeMK = matakuliah.kode";
 	$tampil = mysqli_query($con,$sql); 
 }
 $no = 1;
-while($r = mysqli_fetch_array($tampil)){
+while ($r = mysqli_fetch_array($tampil)) 
+{
 ?>
 	<tr>
 		<td><?php echo $no++; ?></td>
 		<td><?php echo $r['NIM']; ?></td>
-		<td><?php echo $r['KodeMK']; ?></td>
+		<td><?php echo $r['nama']; ?></td>
+		<td><?php echo $r['kodeMK']; ?></td>
+		<td><?php echo $r['nama_matkul']; ?></td>
 		<td><?php echo $r['Nilai']; ?></td>
 	</tr>
+
 <?php } ?>  
 </table>
